@@ -13,6 +13,9 @@ covon.py          # CoVON optimizer for fast and slow VCL training(shared)
 mnist/
     train_mnist.py   # Permuted MNIST (10 tasks)
     data.py          # Data pipeline (downloads and caches automatically)
+vision/
+    train_core50.py       # CORe50 continual learning (8 sessions, ViT-B/16)
+    train_domainnet.py    # DomainNet continual learning (6 domains, ViT-B/16)
 language/
     train_lang.py    # Continual language pretraining: EN -> DE -> FR
     finetune_reasoning.py # Continual finetuning on Math -> Code -> CommonSense (Arc)
