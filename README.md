@@ -137,7 +137,7 @@ python train_lang.py --start_lang de --wandb_run_name my_run
 ```
 
 ## Acknowledgement
-Domain-Incremental Settings: We thank [PyCIL](https://github.com/G-U-N/PyCIL) and [S-Prompts](https://github.com/iamwangyabin/S-Prompts) for their wonderful framework and codes!  
+Domain-Incremental Settings: We thank [PyCIL](https://github.com/G-U-N/PyCIL),  [SPrompt](https://github.com/iamwangyabin/S-Prompts) for their wonderful framework and codes!  
 Continual Pretraining and Finetuning of LLMs: We thank [IVON](https://github.com/team-approx-bayes/ivon-experiments) for their wonderful framework! 
 
 ## Citations
