@@ -240,7 +240,6 @@ def run_training(args):
     os.makedirs(args.checkpoint_dir, exist_ok=True)
 
     if is_main_process() and wandb is not None:
-        wandb.login(key="2c630a88e381b39844e60ef3280903cd2f20efc4")
         wandb.init(
             project="core50-covon",
             config=dict(
