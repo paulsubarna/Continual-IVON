@@ -9,12 +9,13 @@ We introduce CoVON (Continual Variational Online Newton), a fast and slow VCL op
 ## Structure
 
 ```
-ivon_vcl.py          # IVON optimizer with continual learning prior (shared)
+covon.py          # CoVON optimizer for fast and slow VCL training(shared)
 mnist/
     train_mnist.py   # Permuted MNIST (10 tasks)
     data.py          # Data pipeline (downloads and caches automatically)
 language/
     train_lang.py    # Continual language pretraining: EN -> DE -> FR
+    finetune_reasoning.py # Continual finetuning on Math -> Code -> CommonSense (Arc)
     model.py         # GPT model definition
 ```
 
