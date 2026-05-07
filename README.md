@@ -1,4 +1,4 @@
-# Supplementary Code: IVON for Continual Learning
+# Supplementary Code: CoVON: Fast and Slow Variational Continual Learning
 
 This repository contains the training code accompanying the paper.
 
