@@ -9,12 +9,13 @@ We introduce CoVON (Continual Variational Online Newton), a fast and slow VCL op
 ## Structure
 
 ```
-ivon_vcl.py          # IVON optimizer with continual learning prior (shared)
+covon.py          # CoVON optimizer for fast and slow VCL training(shared)
 mnist/
     train_mnist.py   # Permuted MNIST (10 tasks)
     data.py          # Data pipeline (downloads and caches automatically)
 language/
     train_lang.py    # Continual language pretraining: EN -> DE -> FR
+    finetune_reasoning.py # Continual finetuning on Math -> Code -> CommonSense (Arc)
     model.py         # GPT model definition
 ```
 
@@ -98,4 +99,13 @@ Key arguments:
 
 ## Acknowledgement
 Domain-Incremental Settings: We thank [PyCIL](https://github.com/G-U-N/PyCIL) and [S-Prompts](https://github.com/iamwangyabin/S-Prompts) for their wonderful framework and codes!  
-Continual Pretraining and Finetuning of LLMs: We thank [IVON](https://github.com/team-approx-bayes/ivon-experiments) for their wonderful framework!
+Continual Pretraining and Finetuning of LLMs: We thank [IVON](https://github.com/team-approx-bayes/ivon-experiments) for their wonderful framework! 
+
+## Citations 
+
+@ONLINE{wikidump,
+    author = "Wikimedia Foundation",
+    title  = "Wikimedia Downloads",
+    url    = "https://dumps.wikimedia.org"
+}
+
