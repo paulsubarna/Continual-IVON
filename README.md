@@ -1,4 +1,4 @@
-# Supplementary Code: IVON for Continual Learning
+# Supplementary Code: CoVON: Fast and Slow Variational Continual Learning
 
 This repository contains the training code accompanying the paper.
 
@@ -95,3 +95,7 @@ Key arguments:
 | `--gamma_s` / `--de_gamma_s` / `--fr_gamma_s` | 0.0124 | Prior precision factor per language |
 | `--gamma_m` / `--de_gamma_m` / `--fr_gamma_m` | 0.00106 | Prior mean factor per language |
 | `--hess2` | 0.0192 | Hessian reset value at task boundaries |
+
+## Acknowledgement
+Domain-Incremental Settings: We thank [PyCIL](https://github.com/G-U-N/PyCIL) and [S-Prompts](https://github.com/iamwangyabin/S-Prompts) for their wonderful framework and codes!  
+Continual Pretraining and Finetuning of LLMs: We thank [IVON](https://github.com/team-approx-bayes/ivon-experiments) for their wonderful framework!
