@@ -37,6 +37,31 @@ CORe50
 └── paths.pkl
 ```
 
+### DomainNet
+Please refer to the [DomainNet project page](http://ai.bu.edu/M3SDA/) and download the six domain splits. Organize as:
+```
+DomainNet/
+├── clipart/
+│   ├── train/
+│   └── test/
+├── infograph/
+│   ├── train/
+│   └── test/
+├── painting/
+│   ├── train/
+│   └── test/
+├── quickdraw/
+│   ├── train/
+│   └── test/
+├── real/
+│   ├── train/
+│   └── test/
+└── sketch/
+    ├── train/
+    └── test/
+```
+Run the training script from the `DomainNet/` directory (i.e. `cd vision && ln -s /path/to/DomainNet/* .` or set paths accordingly).
+
 ### Language (EN / DE / FR)
 We used the [Wikimedia Wikipedia](https://huggingface.co/datasets/wikimedia/wikipedia) dataset from Hugging Face for language pretraining.
 
@@ -44,8 +69,9 @@ We used the [Wikimedia Wikipedia](https://huggingface.co/datasets/wikimedia/wiki
 
 ```
 torch
-torchvision      # mnist only
+torchvision      # mnist and vision tasks
 numpy
+timm             # vision tasks (ViT-B/16)
 tiktoken         # language only (for tokenization)
 ```
 
@@ -71,6 +97,53 @@ Key arguments:
 | `--ess` | 3.98e7 | Effective sample size |
 | `--gamma_m` | 0.911 | Prior mean interpolation factor |
 | `--gamma_s` | 0.798 | Prior precision accumulation factor |
+
+### Vision: CORe50 (8 sessions)
+
+Place the CORe50 flat directory at `vision/core50_flat/` (or adjust `DATA_DIR` in the script).
+
+```bash
+# Single GPU
+cd vision
+python train_core50.py
+
+# Multi-GPU (4 GPUs)
+torchrun --standalone --nproc_per_node=4 train_core50.py
+
+# Resume from task 3
+python train_core50.py --start_task 3
+```
+
+Key arguments:
+
+| Argument | Default | Description |
+|---|---|---|
+| `--lr_task0` | 1e-4 | Learning rate for task 0 |
+| `--lr` | 5.798e-6 | Learning rate for tasks 1+ |
+| `--ess` | 1.629e7 | Effective sample size |
+| `--epochs` | 20 | Epochs per session |
+| `--hess` | 0.005 | Initial Hessian value |
+| `--hess2` | 1.517e-3 | Hessian reset value at task boundaries |
+| `--gamma_m` | 0.312 | Prior mean interpolation factor |
+| `--gamma_s` | 0.032 | Prior precision accumulation factor |
+
+### Vision: DomainNet (6 domains)
+
+Run from the directory containing the six domain folders.
+
+```bash
+# Single GPU
+cd vision
+python train_domainnet.py
+
+# Multi-GPU (4 GPUs)
+torchrun --standalone --nproc_per_node=4 train_domainnet.py
+
+# Resume from task 3
+python train_domainnet.py --start_task 3
+```
+
+Per-domain hyperparameters are pre-loaded from `DOMAIN_HPARAMS` in the script (from Bayesian search). Pass `--ignore_domain_hparams` to override with CLI arguments.
 
 ### Continual Language Pretraining (EN -> DE -> FR)
 
