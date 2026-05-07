@@ -177,11 +177,23 @@ Key arguments:
 Domain-Incremental Settings: We thank [PyCIL](https://github.com/G-U-N/PyCIL) and [S-Prompts](https://github.com/iamwangyabin/S-Prompts) for their wonderful framework and codes!  
 Continual Pretraining and Finetuning of LLMs: We thank [IVON](https://github.com/team-approx-bayes/ivon-experiments) for their wonderful framework! 
 
-## Citations 
+## Citations
 
+```bibtex
 @ONLINE{wikidump,
     author = "Wikimedia Foundation",
     title  = "Wikimedia Downloads",
     url    = "https://dumps.wikimedia.org"
 }
+
+@misc{qwen3technicalreport,
+      title={Qwen3 Technical Report}, 
+      author={Qwen Team},
+      year={2025},
+      eprint={2505.09388},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2505.09388}, 
+}
+```
 
