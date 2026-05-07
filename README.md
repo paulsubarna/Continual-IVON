@@ -86,18 +86,6 @@ cd mnist
 python train_mnist.py
 ```
 
-Key arguments:
-
-| Argument | Default | Description |
-|---|---|---|
-| `--num_tasks` | 10 | Number of tasks |
-| `--epochs` | 30 | Epochs per task |
-| `--lr_task1` | 5.311e-3 | Learning rate for task 1 |
-| `--lr` | 0.021601 | Learning rate for tasks 2+ |
-| `--ess` | 3.98e7 | Effective sample size |
-| `--gamma_m` | 0.911 | Prior mean interpolation factor |
-| `--gamma_s` | 0.798 | Prior precision accumulation factor |
-
 ### Vision: CORe50 (8 sessions)
 
 Place the CORe50 flat directory at `vision/core50_flat/` (or adjust `DATA_DIR` in the script).
@@ -113,19 +101,6 @@ torchrun --standalone --nproc_per_node=4 train_core50.py
 # Resume from task 3
 python train_core50.py --start_task 3
 ```
-
-Key arguments:
-
-| Argument | Default | Description |
-|---|---|---|
-| `--lr_task0` | 1e-4 | Learning rate for task 0 |
-| `--lr` | 5.798e-6 | Learning rate for tasks 1+ |
-| `--ess` | 1.629e7 | Effective sample size |
-| `--epochs` | 20 | Epochs per session |
-| `--hess` | 0.005 | Initial Hessian value |
-| `--hess2` | 1.517e-3 | Hessian reset value at task boundaries |
-| `--gamma_m` | 0.312 | Prior mean interpolation factor |
-| `--gamma_s` | 0.032 | Prior precision accumulation factor |
 
 ### Vision: DomainNet (6 domains)
 
@@ -160,18 +135,6 @@ torchrun --standalone --nproc_per_node=4 train_lang.py --wandb_run_name my_run
 # Resume from DE
 python train_lang.py --start_lang de --wandb_run_name my_run
 ```
-
-Key arguments:
-
-| Argument | Default | Description |
-|---|---|---|
-| `--iters_per_lang` | 5000 | Optimizer steps per language |
-| `--ess` | 1e10 | ESS for EN |
-| `--de_ess` | 1.44e13 | ESS for DE |
-| `--fr_ess` | 1e15 | ESS for FR |
-| `--gamma_s` / `--de_gamma_s` / `--fr_gamma_s` | 0.0124 | Prior precision factor per language |
-| `--gamma_m` / `--de_gamma_m` / `--fr_gamma_m` | 0.00106 | Prior mean factor per language |
-| `--hess2` | 0.0192 | Hessian reset value at task boundaries |
 
 ## Acknowledgement
 Domain-Incremental Settings: We thank [PyCIL](https://github.com/G-U-N/PyCIL) and [S-Prompts](https://github.com/iamwangyabin/S-Prompts) for their wonderful framework and codes!  
