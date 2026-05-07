@@ -18,6 +18,24 @@ language/
     model.py         # GPT model definition
 ```
 
+## Datasets
+
+### Permuted MNIST
+Downloaded automatically by torchvision on first run.
+
+### CORe50
+Please refer to [CORe50 Project](https://vlomonaco.github.io/core50/index.html#dataset) and download the file shown below:
+```
+CORe50
+├── core50_imgs.npz
+├── labels.pkl
+├── LUP.pkl
+└── paths.pkl
+```
+
+### Language (EN / DE / FR)
+We used the [Wikimedia Wikipedia](https://huggingface.co/datasets/wikimedia/wikipedia) dataset from Hugging Face for language pretraining.
+
 ## Requirements
 
 ```
