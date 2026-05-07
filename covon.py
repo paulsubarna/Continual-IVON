@@ -4,7 +4,6 @@ import math
 from typing import Callable, Optional, Tuple
 from contextlib import contextmanager
 
-from click import group
 import torch
 import torch.optim
 import torch.distributed as dist
@@ -44,7 +43,6 @@ class CoVON_wprior(torch.optim.Optimizer):
         sync: bool = False,
         debias: bool = True,
         differentiable: bool = False,
-        alpha: float = 1,
         gamma_s: float = 1.0,
         gamma_m: float = 1.0,
     ):
@@ -85,7 +83,6 @@ class CoVON_wprior(torch.optim.Optimizer):
         self.debias = debias
         self.weight_decay = weight_decay
         self.differentiable = differentiable
-        self.alpha = alpha
         self.gamma_s = gamma_s
         self.gamma_m = gamma_m
         # set initial temporary running averages
@@ -284,7 +281,6 @@ class CoVON_wprior(torch.optim.Optimizer):
                     clip_radius,
                     debias,
                     group["hess_init"],
-                    self.alpha,
                     group["ess"],
                 )
 
@@ -307,7 +303,7 @@ class CoVON_wprior(torch.optim.Optimizer):
         return beta2 * hess + (1 - beta2) * f + (0.5 * (1 - beta2) ** 2) * (hess - f).square() / (hess + wd)
 
     @staticmethod
-    def _new_param_averages(param, prior_mean, hess, momentum, lr, wd, clip_radius, debias, hess_init, alpha, ess):
+    def _new_param_averages(param, prior_mean, hess, momentum, lr, wd, clip_radius, debias, hess_init, ess):
         if prior_mean is None:
             return param - lr * torch.clip(
                 (momentum/debias +   wd * param) / (hess + wd),
