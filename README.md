@@ -4,7 +4,7 @@ This repository contains the training code accompanying the paper.
 
 ## Method
 
-We extend IVON (Improved Variational Online Newton) for continual learning by maintaining a Bayesian prior across tasks. At each task boundary, `set_for_new_task()` snapshots the accumulated diagonal Hessian as a precision-weighted prior for the next task — no separate Fisher computation or replay buffer is needed.
+We introduce CoVON (Continual Variational Online Newton), a fast and slow VCL optimization algorithm.
 
 ## Structure
 
