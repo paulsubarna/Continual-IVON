@@ -1,6 +1,6 @@
 # Official Repository of CoVON: Fast and Slow Variational Continual Learning
 
-** This repository is in progress **
+**This repository is in progress. We will add more training and evaluation scripts in the coming weeks**
 ### Abstract 
 Continual learning remains a major challenge for modern deep networks, partly because commonly used optimizers lack inherent mechanisms for continual adaptation. 
 One such natural mechanism is ‘fast and slow adaptation’ to balance stability and plasticity. 
