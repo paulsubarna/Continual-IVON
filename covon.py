@@ -311,7 +311,7 @@ class CoVON_wprior(torch.optim.Optimizer):
             )
         else:
             return param - lr * torch.clip(
-                ((momentum/debias ) +  (param - prior_mean))/ (hess + wd),
+                ((momentum/debias ) + wd*  (param - prior_mean))/ (hess + wd),
                 min=-clip_radius, max=clip_radius
             )
 
